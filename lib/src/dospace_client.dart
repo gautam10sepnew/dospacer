@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
+import 'package:xml/xml.dart';
 
 class ClientException implements Exception {
   final int statusCode;
@@ -56,7 +57,7 @@ class Client {
       throw new ClientException(
           response.statusCode, response.reasonPhrase, response.headers, body);
     }
-    xml.XmlDocument doc = xml.parse(body);
+    xml.XmlDocument doc = XmlDocument.parse(body);
     return doc;
   }
 
